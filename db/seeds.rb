@@ -42,7 +42,7 @@ end
   tags << tag
 end
 
-# create 20 gossips with 1 tag each
+# create 20 gossips with 1 tag and 1 comment each
 20.times do |i|
   gossip = Gossip.create(
     title: Faker::Lorem.word,
@@ -55,7 +55,16 @@ end
     gossip: gossip,
     tag: tags[rand(0..9)]
   )
+  
+  comment = Comment.create(
+    content: Faker::Lorem.sentence(word_count: 10),
+    user: users[rand(0..9)],
+    gossip: gossip
+  )
+  
 end
+
+
 
 
 
